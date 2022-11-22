@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function success(data){
+            console.log('JSOM响应回来的数据时:');
+            console.log(data);
+        }
+    </script>
+<!-- ?callback=success 指定调用的函数 -->
+    <script src="http://ajax.frontend.itheima.net:3006/api/jsonp?callback=abc&name=ls&age=22"></script>
+</body>
+</html>

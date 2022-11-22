@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <form action="login" id="f1">
+        <input type="text" name="email_or_mobile">
+        <input type="password" name="password">
+        <button type="sunmit">提交</button>
+    </form>
+    <script>
+        $(function(){
+            // 第一种方式
+            $('#f1').submit(function(e){
+                //preventDefault 阻止表单默认行为
+                e.preventDefault()
+                 //serialize  获取表单中的数据 一定要为表单添加name属性 不然不生效
+            var data = $(this).serialize()
+            console.log(data);
+            });
+           
+            // 第二种方式
+            // $('#f1').on('submit',function(){
+            //     alert('监听到了');
+            // // serialize  获取表单中的数据 一定要为表单添加name属性 不然不生效
+            // var data = $('#f1').serialize();
+            // console.log(data);
+            //  // 阻止表单默认行为
+            // return false;
+            // });
+        })
+        
+    </script>
+</body>
+</html>

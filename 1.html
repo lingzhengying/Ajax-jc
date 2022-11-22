@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/template-web.js"></script>
+</head>
+<body>
+    <input type="text" placeholder="请输入要搜素的值" id="ipt"><button class="btnSearch">搜素</button>
+
+    <script>
+        $(function(){
+            // 1.定义延时器的ID
+            let timer = null;
+            // 2.定义防抖的函数
+            function debounceSearch(kw){
+                timer = setTimeout(function(){
+                    getSuggetList(kw)
+                },500);
+            }
+
+
+            $('#ipt').on('keyup',function(){
+                // 3.清空timer
+                clearTimeout(timer)
+                let keywords = $(this).val().trim();
+                if(keywords.length <= 0){
+                    return $('#ipt').empty().hide();
+                }
+                // grtSuggtList(keywords)
+                debounceSearch(keywords)
+            })
+            function getSuggetList(kw){
+                $.ajax({
+                    url:'https://suggest.taobao.com/sug?q=' + kw,
+                    dataType:'jsonp',
+                    success: function(res){
+                        console.log(res);
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

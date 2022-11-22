@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.创建一个xhr对象
+        let xhr = new XMLHttpRequest()
+
+        // 2.调用open函数 获取数据
+        //   ?id=1 查询字符串 是指在URL末尾加上用于向服务器发送信息的字符串(变量)
+        // xhr.open('GET','http://www.liulongbin.top:3006/api/getbooks?id=1&---*')
+        xhr.open('GET','http://www.liulongbin.top:3006/api/getbooks')
+
+        // 3.调用send函数 发起请求
+        xhr.send()
+
+        // 监听 onreadystatechange 事件
+        // readyState 用来表示当前Ajax请求的状态
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                // 获取服务器响应的数据
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+</html>
